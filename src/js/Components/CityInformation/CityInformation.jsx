@@ -3,9 +3,6 @@ import React from 'react';
 class CityInformation extends React.Component {
     render(){
       const { cityInfo, error } = this.props;
-      if({ error } === true ){
-        alert('City not found! Please try your search again or search another city');
-      }
 
         return(
             <div className='card'>

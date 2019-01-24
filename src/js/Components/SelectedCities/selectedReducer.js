@@ -3,7 +3,6 @@ const defaultState = {
     cityInfo: '',
     date: '',
     error: '',
-    errorData: '',
     lineItems: []
 };
 
@@ -11,7 +10,6 @@ export default function SelectedReducer (state = defaultState, action) {
     const { type, payload } = action;
 
     switch (type) {
-        //Update search city
         case 'UPDATE_SEARCH_CITY' : {
             return {
                 ...state,
@@ -33,18 +31,18 @@ export default function SelectedReducer (state = defaultState, action) {
             const newDate = month + "/" + day + "/" + year;
 
             const hours = dateObj.getHours();
-            const minutes = (dateObj.getMinutes()<10 ? '0' : '') + dateObj.getMinutes();
+            const minutes = (dateObj.getMinutes() <10 ? '0' : '') + dateObj.getMinutes();
             const seconds = (dateObj.getSeconds() <10 ? '0' : '') + dateObj.getSeconds();
             const newTime = hours + ':' + minutes + ':' + seconds;
             const date = newDate;
             const name = action.payload.data.name;
             const time = newTime;
+            
             return {
                 city: '',
                 cityInfo: action.payload.data,
                 date: '',
                 error: '',
-                errorData: '',
                 lineItems: [
                 ...state.lineItems,
                 { date, name, time }
@@ -59,16 +57,13 @@ export default function SelectedReducer (state = defaultState, action) {
                 cityInfo: '',
                 date: '',
                 error: true,
-                errorData: action.payload.response.data
             }
 
         }
 
         default: {
-            return state;
+            return state
+            }
         }
-
-       
     }
-} 
 

@@ -18,7 +18,6 @@ export default class App extends React.Component {
             <div className='col-sm-6'>
               <CityInformation />
             </div>
-
             <div className='col-sm-6'>
               <SearchHistory />
           </div>

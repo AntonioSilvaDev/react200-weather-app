@@ -20,7 +20,6 @@ app.get('/api', function(req, res){
             res.status(200).send(response.data)
         })
         .catch(function(err){
-            console.log(err.response.data);
             res.status(404).send(err.response.data)
         });
 });

@@ -22,9 +22,14 @@ export default class SelectedCities extends React.Component {
     }
 
     clickHandler(event){
+        if(event.target.value) {
         const { value } = event.target;
         const { dispatch } = this.props;
         dispatch(fetchData(value));
+        }
+        else {
+            return alert('Please enter a value for city and try again!');
+        }
     }
 
     render() {
@@ -40,7 +45,7 @@ export default class SelectedCities extends React.Component {
                     <button className='btn btn-primary' value='Tokyo' onClick={this.clickHandler}       >Tokyo</button>
                 </div>
                 <div className="input-group mb-3">
-                    <input type="text" className="form-control" aria-label="city-name" value={ city } aria-describedby="basic-addon2" onChange={this.handleCityInput} />
+                    <input type="text" className="form-control" aria-label="city-name" value={ city } placeholder='City Name...' aria-describedby="basic-addon2" onChange={this.handleCityInput} />
                     <div className="input-group-append">
                         <button className="btn btn-outline-secondary" type="button" value={ city } onClick={this.clickHandler}>Go!</button>
                     </div>
