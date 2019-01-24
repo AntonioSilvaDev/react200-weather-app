@@ -11,6 +11,6 @@ export function updateSearchCity(city){
 export function fetchData(value){
     return {
         type: 'FETCH_DATA',
-        payload: axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${value}&units=imperial&appid={placeholder}`)
+        payload: axios.get('/api', {params: { q: `${value}`}})
     }
 }

@@ -2,14 +2,17 @@ import React from 'react';
 
 class CityInformation extends React.Component {
     render(){
-      const { cityInfo } = this.props;
+      const { cityInfo, error } = this.props;
+      if({ error } === true ){
+        alert('City not found! Please try your search again or search another city');
+      }
 
         return(
             <div className='card'>
                 <div className='card-header bg-info'>City Information</div>
-                <div className='card-body text-center'>
-                  <h1 className='card-title'>{ cityInfo.name } </h1>
-                  <p className='card-text'> { cityInfo.name ? 'Lat/Lon: ' + cityInfo.coord.lat + ',' + cityInfo.coord.lon : 'Coord' }</p>
+                <div className='card-body text-center'>{ error ? <h1 className='error'>City not found. Please try again!!</h1> : ''}
+                  <h1 className='card-title'>{ cityInfo.name ? cityInfo.name : 'Choose a City or Search'} </h1>
+                  <p className='card-text'> { cityInfo.name ? 'Lat/Lon: ' + cityInfo.coord.lat + ',' + cityInfo.coord.lon : 'Coordinates' }</p>
                   <hr className='m-1' />
                   <div className='row'>
                     <div className='col-sm-4 text-center'>

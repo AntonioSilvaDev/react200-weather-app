@@ -1,9 +1,9 @@
 const defaultState = {
     city: '',
     cityInfo: '',
-    cityCoord: '',
     date: '',
-    data: '',
+    error: '',
+    errorData: '',
     lineItems: []
 };
 
@@ -26,24 +26,25 @@ export default function SelectedReducer (state = defaultState, action) {
         }
 
         case 'FETCH_DATA_FULFILLED' : {
-            var dateObj = new Date();
-            var month = dateObj.getUTCMonth() + 1; //months from 1-12
-            var day = dateObj.getUTCDate();
-            var year = dateObj.getUTCFullYear();
-            var newDate = month + "/" + day + "/" + year;
+            const dateObj = new Date();
+            const month = dateObj.getMonth() + 1; //months from 1-12
+            const day = dateObj.getDate();
+            const year = dateObj.getFullYear();
+            const newDate = month + "/" + day + "/" + year;
 
-            var hours = dateObj.getUTCHours();
-            var minutes = dateObj.getUTCMinutes();
-            var seconds = dateObj.getUTCSeconds();
-            var newTime = hours + ':' + minutes + ':' + seconds;
-            let date = newDate;
-            let name = action.payload.data.name;
-            let time = newTime;
+            const hours = dateObj.getHours();
+            const minutes = (dateObj.getMinutes()<10 ? '0' : '') + dateObj.getMinutes();
+            const seconds = (dateObj.getSeconds() <10 ? '0' : '') + dateObj.getSeconds();
+            const newTime = hours + ':' + minutes + ':' + seconds;
+            const date = newDate;
+            const name = action.payload.data.name;
+            const time = newTime;
             return {
                 city: '',
                 cityInfo: action.payload.data,
-                cityCoord: action.payload.data.coord,
                 date: '',
+                error: '',
+                errorData: '',
                 lineItems: [
                 ...state.lineItems,
                 { date, name, time }
@@ -53,7 +54,12 @@ export default function SelectedReducer (state = defaultState, action) {
 
         case 'FETCH_DATA_REJECTED' : {
             return {
-                ...state
+                ...state,
+                city: '',
+                cityInfo: '',
+                date: '',
+                error: true,
+                errorData: action.payload.response.data
             }
 
         }
