@@ -1,4 +1,5 @@
 const path = require('path');
+const dotenv = require('dotenv')
 
 module.exports = {
   context: path.join(__dirname, '/src'),
