@@ -1,6 +1,7 @@
 const defaultState = {
     city: '',
     cityInfo: '',
+    weatherIcon: '',
     date: '',
     error: '',
     lineItems: []
@@ -41,6 +42,7 @@ export default function SelectedReducer (state = defaultState, action) {
             return {
                 city: '',
                 cityInfo: action.payload.data,
+                weatherIcon: action.payload.data.weather[0].icon,
                 date: '',
                 error: '',
                 lineItems: [
@@ -55,6 +57,7 @@ export default function SelectedReducer (state = defaultState, action) {
                 ...state,
                 city: '',
                 cityInfo: '',
+                weatherIcon: '',
                 date: '',
                 error: true,
             }
