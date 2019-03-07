@@ -1,11 +1,9 @@
 import React from 'react';
 
-//importing Action Creators
 import {
     updateSearchCity,
     fetchData
 } from './selectedActions';
-import { bindActionCreators } from 'redux';
 
 export default class SelectedCities extends React.Component {
     constructor(props) {
@@ -18,6 +16,7 @@ export default class SelectedCities extends React.Component {
     handleCityInput(event) {
         const { dispatch } = this.props;
         const { value } = event.target;
+
         dispatch(updateSearchCity(value));
     }
 
@@ -25,6 +24,7 @@ export default class SelectedCities extends React.Component {
         if(event.target.value) {
         const { value } = event.target;
         const { dispatch } = this.props;
+        
         dispatch(fetchData(value));
         }
         else {

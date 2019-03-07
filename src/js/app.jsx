@@ -13,13 +13,13 @@ export default class App extends React.Component {
         </div>
         <div className='row'>
           <SelectedCities />
+        </div>
+        <div className='row'>
+          <div className='col-sm-6'>
+            <CityInformation />
           </div>
-          <div className='row'>
-            <div className='col-sm-6'>
-              <CityInformation />
-            </div>
-            <div className='col-sm-6'>
-              <SearchHistory />
+          <div className='col-sm-6'>
+            <SearchHistory />
           </div>
         </div>  
       </div>

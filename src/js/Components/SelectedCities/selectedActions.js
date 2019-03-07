@@ -1,5 +1,4 @@
 import axios from "axios";
-//Action Creators
 
 export function updateSearchCity(city){
     return {
