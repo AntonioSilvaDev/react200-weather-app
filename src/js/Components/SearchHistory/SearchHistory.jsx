@@ -10,8 +10,8 @@ class SearchHistory extends React.Component{
                 <div className='card-body'>            
                   <div className='list-group list-group-flush d-flex'>
                   { 
-                      lineItems.map(lineItem => (
-                          <div className='list-group-item d-flex align-items-end flex-column py-0'>
+                      lineItems.map((lineItem, index) => (
+                          <div key={index} className='list-group-item d-flex align-items-end flex-column py-0'>
                             <div className='d-flex w-100 justify-content-between'>
                               <p className='my-0'>{ lineItem.name }</p>
                               <p className='my-0'>{ lineItem.date }</p>
